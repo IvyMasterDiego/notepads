@@ -1,0 +1,764 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ofimatic.Helpers</name>
+    </assembly>
+    <members>
+        <member name="T:Ofimatic.Helpers.Assembler.AssemblyManager">
+            <summary>
+            Clase que provee información sobre el Assembly Principal de la aplicación. 
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Assembler.AssemblyManager.#cctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Ofimatic.Helpers.Assembler.AssemblyManager"/>.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Assembler.AssemblyManager.Assembly">
+            <summary>
+            Obtiene el Assembly de la aplicación principal.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Assembler.AssemblyManager.Title">
+            <summary>
+            Obtiene el título del Assembly.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Assembler.AssemblyManager.Version">
+            <summary>
+            Obtiene la versión del Assembly.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Assembler.AssemblyManager.Company">
+            <summary>
+            Obtiene el nombre del fabricante del producto.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Assembler.AssemblyManager.Application">
+            <summary>
+            Obtiene el nombre del producto.
+            </summary>
+            <remarks>
+            este valor se obtiene del atributo <see cref="T:System.Reflection.AssemblyProductAttribute"/> del assembly, el valor de este
+            atributo especifica tanto la aplicación como el módulo de la siguiente manera: [Application], [Module...]
+            </remarks>
+        </member>
+        <member name="P:Ofimatic.Helpers.Assembler.AssemblyManager.Module">
+            <summary>
+            Obtiene el nombre del módulo.
+            </summary>
+            <remarks>
+            este valor se obtiene del atributo <see cref="T:System.Reflection.AssemblyProductAttribute"/> del assembly, el valor de este
+            atributo especifica tanto la aplicación como el módulo de la siguiente manera: [Application], [Module...]
+            </remarks>
+        </member>
+        <member name="P:Ofimatic.Helpers.Assembler.AssemblyManager.DefaultDirectory">
+            <summary>
+            Obtiene el directorio por defecto de la aplicación.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Assembler.AssemblyManager.AssemblyValidator">
+            <summary>
+            Método para válidar el ensamblado.
+            </summary>
+        </member>
+        <member name="T:Ofimatic.Helpers.Configuration.AppConfiguration">
+            <summary>
+            Clase que administra la configuración de la aplicación. 
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Configuration.AppConfiguration.SettingFileName">
+            <summary>
+            Obtiene o establece la ruta del archivo de configuración.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Configuration.AppConfiguration.SaveConfiguration``1(``0,Ofimatic.Helpers.Cryptography.ICryptography)">
+            <summary>
+            Método que guarda las configuraciones en el archivo de configuración.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Configuration.AppConfiguration.LoadConfiguration``1(Ofimatic.Helpers.Cryptography.ICryptography)">
+            <summary>
+            Método que actualiza las configuraciones leyendo el archivo de configuración,
+            </summary>
+        </member>
+        <member name="T:Ofimatic.Helpers.Cryptography.Base64Encode">
+            <summary>
+            Permite codificar y decodificar una cadena en base64.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Cryptography.Base64Encode.Encode(System.String,System.Text.Encoding)">
+            <summary>
+            Codifica una cadena a base64, utilizando un encoding determinado.
+            </summary>
+            <param name="text">cadena a codificar.</param>
+            <param name="encoding">encoding usado. Por defecto es <see cref="P:System.Text.Encoding.UTF8"/></param>
+            <returns>retorna la cadena codificada.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Cryptography.Base64Encode.Decode(System.String,System.Text.Encoding)">
+            <summary>
+            Decodifica una cadena de base64, utilizando un encoding determinado.
+            </summary>
+            <param name="text">cadena a decodificar.</param>
+            <param name="encoding">encoding usado. Por defecto es <see cref="P:System.Text.Encoding.UTF8"/></param>
+            <returns>retorna la cadena decodificada.</returns>
+        </member>
+        <member name="T:Ofimatic.Helpers.Cryptography.Encryptor">
+            <summary>
+            Clase que permite encriptar y desencriptar datos utilizando el algoritmo de cifrado TripleDES.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Cryptography.Encryptor.#ctor(System.Security.SecureString)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Ofimatic.Helpers.Cryptography.Encryptor"/>.
+            </summary>
+            <param name="key">credenciales de encriptación.</param>
+        </member>
+        <member name="M:Ofimatic.Helpers.Cryptography.Encryptor.Encrypt(System.String)">
+            <summary>
+            Método que encripta un valor utilizando el algoritmo de cifrado.
+            </summary>
+            <param name="data">datos a encriptar.</param>
+            <returns>retorna el valor encriptado.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            se lanza cuando <paramref name="data"/> es null o <see cref="F:System.String.Empty"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            se lanza cuando ocurre un error relacionado a las credenciales.
+            </exception>
+        </member>
+        <member name="M:Ofimatic.Helpers.Cryptography.Encryptor.Decrypt(System.String)">
+            <summary>
+            Método que desencripta un valor utilizando el algoritmo de cifrado.
+            </summary>
+            <param name="data">datos desencriptar.</param>
+            <returns>retorna el valor encriptado.</returns>
+            <exception cref="T:System.InvalidOperationException">
+            se lanza cuando <paramref name="data"/> es null o <see cref="F:System.String.Empty"/>.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            se lanza cuando ocurre un error relacionado a las credenciales.
+            </exception>
+        </member>
+        <member name="T:Ofimatic.Helpers.Cryptography.ICryptography">
+            <summary>
+            Interfaz que representa un algoritmo de cifrado.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Cryptography.ICryptography.Encrypt(System.String)">
+            <summary>
+            Método para encriptar una cadena de caracteres en formato <see cref="T:System.String"/>.
+            </summary>
+            <param name="data">datos a encriptar</param>
+            <returns>retorna un objecto <see cref="T:System.String"/> con los datos encriptados.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Cryptography.ICryptography.Decrypt(System.String)">
+            <summary>
+            Método para desencriptar una cadena de caracteres en formato <see cref="T:System.String"/>.
+            </summary>
+            <param name="data">datos a desencriptar</param>
+            <returns>retorna un objecto <see cref="T:System.String"/> con los datos desencriptados.</returns>
+        </member>
+        <member name="T:Ofimatic.Helpers.Cryptography.PasswordHashing">
+            <summary>
+            Esta clase permite generar una Hash para contraseña utilizando un determinado algoritmo de cifrado.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Cryptography.PasswordHashing.Algorithm">
+            <summary>
+            Obtiene o establece el algoritmo de cifrado. Por defecto es <see cref="T:System.Security.Cryptography.SHA256"/>.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Cryptography.PasswordHashing.Encoding">
+            <summary>
+            Obtiene o establece el encoding de los datos. Por defecto es <see cref="P:System.Text.Encoding.UTF8"/>.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Cryptography.PasswordHashing.GetHashing(System.String,System.Security.Cryptography.HashAlgorithm,System.Text.Encoding)">
+            <summary>
+            Método que genera un Hash para una contraseña. 
+            </summary>
+            <param name="password">contraseña a encriptar.</param>
+            <param name="algorithm">algoritmo utilizado para encriptar la contraseña. Por defecto es <see cref="P:Ofimatic.Helpers.Cryptography.PasswordHashing.Algorithm"/>.</param>
+            <param name="encoding">encoding de los datos. por defecto es <see cref="P:Ofimatic.Helpers.Cryptography.PasswordHashing.Encoding"/>.</param>
+            <returns>retorna la contraseña encriptada.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Cryptography.PasswordHashing.HashingCompare(System.String,System.String,System.Security.Cryptography.HashAlgorithm,System.Text.Encoding)">
+            <summary>
+            Método que compara un Hash con una contraseña.
+            </summary>
+            <param name="passwordHash">hash de la contraseña.</param>
+            <param name="password">contraseña.</param>
+            <param name="algorithm">algoritmo utilizado para encriptar la contraseña. Por defecto es <see cref="P:Ofimatic.Helpers.Cryptography.PasswordHashing.Algorithm"/>.</param>
+            <param name="encoding">encoding de los datos. por defecto es <see cref="P:Ofimatic.Helpers.Cryptography.PasswordHashing.Encoding"/>.</param>
+            <returns>retorna <see cref="F:System.Boolean.TrueString"/> si lascon contraseñas son iguales, en caso contrario retorna <see cref="F:System.Boolean.FalseString"/>.</returns>
+        </member>
+        <member name="T:Ofimatic.Helpers.Email.Mail">
+            <summary>
+            Clase que provee método y propiedades para el envío de Email.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Email.Mail.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Ofimatic.Helpers.Email.Mail"/>.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.DisplayName">
+            <summary>
+            Obtiene o establece el nombre que se visualiza en el correo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.From">
+            <summary>
+            Obtiene o establece el correo origen.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.Credential">
+            <summary>
+            Obtiene o establece las credenciales para el envío de correo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.Subject">
+            <summary>
+            Obtiene o establece el Asunto del correo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.Body">
+            <summary>
+            Obtiene o establece el cuerpo o contenido del correo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.To">
+            <summary>
+            Obtiene o establece un <see cref="T:Ofimatic.Helpers.Email.MailCollection"/> que reprecenta la lista de destinatario del correo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.CC">
+            <summary>
+            Obtiene o establece un <see cref="T:Ofimatic.Helpers.Email.MailCollection"/> que reprecenta la copia de carbón.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.BCC">
+            <summary>
+            Obtiene o establece un <see cref="T:Ofimatic.Helpers.Email.MailCollection"/> que reprecenta la copia de carbón oculta.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.AttachFiles">
+            <summary>
+            Obtiene o establece un <see cref="T:Ofimatic.Helpers.Email.MailCollection"/> que reprecenta los arhivos adjuntos del correo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.EnableSSL">
+            <summary>
+            Obtiene o establece un valor que indica si el envío utilizará conexión segura.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.Host">
+            <summary>
+            Obtiene o establece el nombre del servidor de correo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.Port">
+            <summary>
+            Obtiene o establece el puerto del servidor de correo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.UseHTMLBody">
+            <summary>
+            Obtiene o establece un valor que indica si el cuerpo del mensaje es HTML.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.Mail.Timeout">
+            <summary>
+            Obtiene o establece un valor que especifica la cantidad de tiempo después del
+            cual se agota el tiempo de espera de una sobrecarga sincrónica.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Email.Mail.SendMailMessage">
+            <summary>
+            Método que envía un correo electrónico a la lista <see cref="P:Ofimatic.Helpers.Email.Mail.To"/> 
+            de acuerdo al estado de las propiedades.
+            </summary>
+        </member>
+        <member name="T:Ofimatic.Helpers.Email.MailCollection">
+            <summary>
+            Clase que reprecenta una colección de elementos de <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Email.MailCollection.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Ofimatic.Helpers.Email.MailCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Email.MailCollection.Add(System.String)">
+            <summary>
+            Método que agrega un nuevo item a la colección. 
+            Antes de agregar verifica si ya existe para evitar duplicidad.
+            </summary>
+            <param name="item">nuevo elemento para agregar.</param>
+            <exception cref="T:System.ArgumentNullException">se lanza cuando el <paramref name="item"/> es nulo.</exception>
+        </member>
+        <member name="M:Ofimatic.Helpers.Email.MailCollection.AddRange(System.Collections.Generic.List{System.String})">
+            <summary>
+            Método para agregar un conjunto completo de elementos a la colección.
+            </summary>
+            <param name="collection">lista de elementos para agregar a la colección.</param>
+            <exception cref="T:System.ArgumentNullException">se lanza cuando <paramref name="collection"/> es nula.</exception>
+            <exception cref="T:System.InvalidOperationException">se lanza cuando <paramref name="collection"/> no contiene elementos.</exception>
+        </member>
+        <member name="M:Ofimatic.Helpers.Email.MailCollection.GetAllItems">
+            <summary>
+            Método que obtiene <see cref="T:System.Collections.Generic.List`1"/> con todos los elementos de la colección.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Ofimatic.Helpers.Email.MailCredential">
+            <summary>
+            Clase que reprecenta las credenciales para el envío de correo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.MailCredential.Username">
+            <summary>
+            Obtiene el nombre de usuario asociado con las credenciales.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Email.MailCredential.Password">
+            <summary>
+            Obtiene la contraseña para el nombre de usuario asociado con las credenciales.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Email.MailCredential.#ctor(System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Ofimatic.Helpers.Email.MailCredential"/>.
+            </summary>
+            <param name="username">nombre de usuario.</param>
+            <param name="password">contraseña.</param>
+        </member>
+        <member name="T:Ofimatic.Helpers.Control.MessageDialog">
+            <summary>
+            Clase que provee métodos utilitario para mostrar información al usuario atreves <see cref="T:System.Windows.Forms.MessageBox"/>.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Control.MessageDialog.ShowDialog(System.String,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxButtons)">
+            <summary>
+            Método que muestra al usuario un determinado mensaje.
+            </summary>
+            <remarks>
+            el subtítulo del mensaje de <see cref="P:Ofimatic.Helpers.Assembler.AssemblyManager.Title"/>.
+            </remarks>
+            <param name="msg">mensaje mostrado al usuario.</param>
+            <param name="msgico">icono mostrado al usuario.</param>
+            <param name="msgbtn">botón de opción.</param>
+            <returns>retorna un <see cref="T:System.Windows.Forms.DialogResult"/> con la opcion elegido por el usuario.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Control.MessageDialog.ShowDialog(System.Exception,System.Boolean,System.Windows.Forms.MessageBoxIcon,System.Windows.Forms.MessageBoxButtons)">
+            <summary>
+            Método que muestra al usuario un mensaje de error contenido en un <see cref="T:System.Exception"/>.
+            </summary>
+            <remarks>
+            el subtítulo del mensaje de <see cref="P:Ofimatic.Helpers.Assembler.AssemblyManager.Title"/>.
+            </remarks>
+            <param name="exception">error a mostrar al usuario.</param>
+            <param name="errorProcess">Valor que se indica se el error se proceso con <see cref="P:Ofimatic.Helpers.Log.Logger.ErrorProcess"/>. Por defecto es <see cref="F:System.Boolean.FalseString"/></param>
+            <param name="msgico">icono mostrado al usuario.</param>
+            <param name="msgbtn">botón de opción.</param>
+            <returns>retorna un <see cref="T:System.Windows.Forms.DialogResult"/> con la opcion elegido por el usuario.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Control.MessageDialog.ShowMessabeBox(System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon)">
+            <summary>
+            Método que muestra un determinado mensaje al usuario.
+            </summary>
+            <remarks>
+            el subtítulo del mensaje de <see cref="P:Ofimatic.Helpers.Assembler.AssemblyManager.Title"/>.
+            </remarks>
+            <param name="msg">mensaje mostrado al usuario.</param>
+            <param name="msgbtn">botón de opción..</param>
+            <param name="msgico">icono mostrado al usuario.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Ofimatic.Helpers.File.FileManager">
+            <summary>
+            Clase para exportar datos tabulares a un archivo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.File.FileManager.Delimiter">
+            <summary>
+            Obtiene o establece el carcter delimitador para el archivo CSV.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.File.FileManager.SaveData(System.Windows.Forms.DataGridView,Ofimatic.Helpers.File.FileType,System.String)">
+            <summary>
+            Método que guarda los datos del Grid en un archivo.
+            </summary>
+            <remarks>
+            Este método utiliza diálogos que interactúan con el usuario.
+            </remarks>
+            <param name="dataGridView">Grid contenedor de los datos.</param>
+            <param name="types">tipo de archivo permitidos. Por defecto es CSV|XML.</param>
+            <param name="fileName">nombre del archivo por defecto. Por defecto es null.</param>
+        </member>
+        <member name="M:Ofimatic.Helpers.File.FileManager.XmlSerializer``1(``0,System.String)">
+            <summary>
+            Método que convierte un objeto en un archivo XML.
+            </summary>
+            <typeparam name="TSource">tipo del objeto a convertir.</typeparam>
+            <param name="source">objeto a convertir.</param>
+            <param name="path">nombre del archivo donde se guardarán los datos.</param>
+        </member>
+        <member name="M:Ofimatic.Helpers.File.FileManager.XmlDeserialize``1(System.String)">
+            <summary>
+            Método que convierte un archivo XML a un determinado objeto.
+            </summary>
+            <typeparam name="TSource">tipo del objeto a convertir.</typeparam>
+            <param name="path">nombre del archivo desde donde se extraen los datos.</param>
+            <returns>retorna una instancia de <typeparamref name="TSource"/> con los datos correspondietes.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.File.FileManager.XmlStringToObject``1(System.String)">
+            <summary>
+            Método que convierte una cadena con formato XML a un determinado objeto.
+            </summary>
+            <param name="content">cadena con el contenido XML.</param>
+            <returns>retorna un objeto con los datos correspondietes.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.File.FileManager.ObjectToXmlString``1(``0)">
+            <summary>
+            Método que convierte un objeto a una cadena con formato XML.
+            </summary>
+            <typeparam name="TSource">tipo del objeto a convertir.</typeparam>
+            <param name="source">objeto a convertir.</param>
+            <returns>retorna una cadena con los datos XML.</returns>
+        </member>
+        <member name="T:Ofimatic.Helpers.File.FileType">
+            <summary>
+            Tipos de formatos de archivo soportados.
+            </summary>
+        </member>
+        <member name="F:Ofimatic.Helpers.File.FileType.CSV">
+            <summary>
+            Para archivos en formato CSV.
+            </summary>
+        </member>
+        <member name="F:Ofimatic.Helpers.File.FileType.XML">
+            <summary>
+            Para archivos en formato XML.
+            </summary>
+        </member>
+        <member name="T:Ofimatic.Helpers.Validators.PhoneFormat">
+            <summary>
+            Formatos de números telefónicos.
+            </summary>
+        </member>
+        <member name="F:Ofimatic.Helpers.Validators.PhoneFormat.Standard">
+            <summary>
+            Sin formato: xxxxxxxxxx.
+            </summary>
+        </member>
+        <member name="F:Ofimatic.Helpers.Validators.PhoneFormat.Classic">
+            <summary>
+            Formato con espacio entre los tres renglones: xxx xxx xxxx.
+            </summary>
+        </member>
+        <member name="F:Ofimatic.Helpers.Validators.PhoneFormat.Traditional">
+            <summary>
+            Formato con guiones entre los tres renglones : xxx-xxx-xxxx.
+            </summary>
+        </member>
+        <member name="F:Ofimatic.Helpers.Validators.PhoneFormat.Modern">
+            <summary>
+            Formato con paréntesis en el primer renglón, espacio y guiones entre los dos restantes: (xxx) xxx-xxxx.
+            </summary>
+        </member>
+        <member name="T:Ofimatic.Helpers.Validators.Validators">
+            <summary>
+            Clase que proporciona método de validación y formato para algunos datos estandarizados como número telefónico y cédula.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Validators.Validators.IDValidator(System.String)">
+            <summary>
+            Método que determina la validez de una Cédula Dominicana.
+            </summary>
+            <param name="id">cédula a validar.</param>
+            <returns>retorna true si la cédula es válida, en caso contrario retorna false.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Validators.Validators.IDFormatter(System.String,System.Boolean)">
+            <summary>
+            Método que aplica un formato a una cédula dominicana con o sin guion. Este método válida la cedula antes de formatearla. 
+            </summary>
+            <param name="id">cédula a formatear.</param>
+            <param name="dash">si es true la cédula se formatea con los guiones, en caso contrario, se remueven los guiones.</param>
+            <returns>retorna la cédula con el formato aplicado.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Validators.Validators.PhoneValidator(System.String)">
+            <summary>
+            Método que determina la validez de un número telefónico de República Dominicana. 
+            El código de país de la Republica Dominicana es +1 con tres códigos de área: 809, 829 y 849.
+            </summary>
+            <param name="phone">número telefónico a validar.</param>
+            <returns>retorna true si el número telefónico es válido, en caso contrario retorna false.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Validators.Validators.PhoneFormatter(System.String,Ofimatic.Helpers.Validators.PhoneFormat,System.Boolean)">
+            <summary>
+            Método que aplica un formato a un número telefónico de la Republica Dominicana. 
+            Este método válido el número telefónico antes de formatearlo.
+            </summary>
+            <param name="phone">número telefónico a formatear.</param>
+            <param name="format">Formato aplicado, por defecto es: <see cref="F:Ofimatic.Helpers.Validators.PhoneFormat.Modern"/>.</param>
+            <param name="countryCode">código de país, por defecto es false.</param>
+            <returns>retorna el número telefónico con el formato aplicado.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Validators.Validators.EmailValidator(System.String)">
+            <summary>
+            Método que determina la validez de una dirección de correo electrónico.
+            </summary>
+            <param name="email">dirección de correo electrónico a validar.</param>
+            <returns>retorna true si la dirección de correo electrónico es válida, en caso contrario retorna false.</returns>
+        </member>
+        <member name="T:Ofimatic.Helpers.Licenses.License">
+            <summary>
+            Esta clase representa una licencia.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Licenses.License.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Ofimatic.Helpers.Licenses.License"/> con el constructor por defecto.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Licenses.License.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Ofimatic.Helpers.Licenses.License"/> con un <see cref="T:System.Collections.Generic.Dictionary`2"/> con los keys.
+            </summary>
+            <param name="keys">keys requeridos por la aplicación.</param>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.ID">
+            <summary>
+            Obtiene o establece el ID de la licencia.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.Application">
+            <summary>
+            Obtiene o establece el nombre de la aplicación a la cual pertenece la licencia.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.Modules">
+            <summary>
+            Obtiene los módulos soportados por la licencia o solicitados.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.Location">
+            <summary>
+            Obtiene o establece un valor de referencia a la localidad del equipo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.HostName">
+            <summary>
+            Obtiene o establece el nombre del equipo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.BaseBoard">
+            <summary>
+            Obtiene o establece el serial del equipo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.MacAddress">
+            <summary>
+            Obtiene o establece la interfaz de Red presente en el equipo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.RequestDate">
+            <summary>
+            Obtiene o establece la fecha en la que se crea la solictud.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.Generation">
+            <summary>
+            Obtiene o establece la fecha en que se genera la licencia.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.Expiration">
+            <summary>
+            Obtiene o establece la fecha de expiración de la licencia.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.CustomerID">
+            <summary>
+            Obtiene o establece el código del cliente.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.CustomerName">
+            <summary>
+            Obtiene o establece el nombre del cliente.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.KeyReader">
+            <summary>
+            Obtiene o establece el keyReader.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.GeneratedBy">
+            <summary>
+            Obtiene o establece el usuario que genero la licencia.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.License.Reason">
+            <summary>
+            Obtiene o establece la razón para la generación de la licencia.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Licenses.License.GetLicenseKeys">
+            <summary>
+            Obtiene un dicionario con todos los Keys de la licencia.
+            </summary>
+        </member>
+        <member name="T:Ofimatic.Helpers.Licenses.LicenseHelp">
+            <summary>
+            Esta clase proporciona los métodos necesarios para trabajar generar, validar y activar licencias.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.LicenseHelp.HostName">
+            <summary>
+            Obtiene el nombre del equipo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.LicenseHelp.BaseBoard">
+            <summary>
+            Obtiene el serial del equipo.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.LicenseHelp.NetworkInterfaces">
+            <summary>
+            Obtiene una lista de las interfaces de Red presentes en el equipo.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Licenses.LicenseHelp.LicenseValidator(System.String,Ofimatic.Helpers.Cryptography.ICryptography,Ofimatic.Helpers.Licenses.License@,System.String@)">
+            <summary>
+            Método que valida una licencia comparando los valores de la licencia y los valores del equipo.
+            </summary>
+            <param name="licenseInfo" >información de licencia.</param>
+            <param name="cryptography">algoritmo de cifrado.</param>
+            <param name="license">objecto con la información de la licencia.</param>
+            <param name="message">mensaje del resultado de la validación.</param>
+        </member>
+        <member name="M:Ofimatic.Helpers.Licenses.LicenseHelp.CreateRequest(System.Int32,System.String,System.String,System.String,Ofimatic.Helpers.Cryptography.ICryptography)">
+            <summary>
+            Método que crea una solicitud de acuerdo a los parámetros.
+            </summary>
+        </member>
+        <member name="T:Ofimatic.Helpers.Licenses.MacAddress">
+            <summary>
+            Esta clase representa una dirección Mac.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Licenses.MacAddress.#ctor(System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Ofimatic.Helpers.Licenses.MacAddress"/>.
+            </summary>
+            <param name="address">dirección física del adaptador.</param>
+            <param name="description"></param>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.MacAddress.Address">
+            <summary>
+            Obtiene la dirección física del adaptador.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Licenses.MacAddress.Description">
+            <summary>
+            Obtiene la descripción de la interfaz.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Licenses.MacAddress.ToString">
+            <summary>
+            Obtiene una reprecentación Mac(des) de la interfaz.
+            </summary>
+            <returns>retorna un <see cref="T:System.String"/> con la representación de la interfaz.</returns>
+        </member>
+        <member name="T:Ofimatic.Helpers.Licenses.Reason">
+            <summary>
+            Representa la razón de emisión de la licencia.
+            </summary>
+        </member>
+        <member name="F:Ofimatic.Helpers.Licenses.Reason.New">
+            <summary>
+            Corresponde a primera emisión de una licencia para una terminal.
+            </summary>
+        </member>
+        <member name="F:Ofimatic.Helpers.Licenses.Reason.Renewal">
+            <summary>
+            Corresponde a una renovación de una licencia emitida anteriormente.
+            </summary>
+        </member>
+        <member name="T:Ofimatic.Helpers.Log.ErrorProcess">
+            <summary>
+            Clase que establece las propiedades que escriben en archivo de log para cada tipo de expresión. 
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Log.ErrorProcess.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:Ofimatic.Helpers.Log.ErrorProcess"/> con el constructor por defecto.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Log.ErrorProcess.GetErrorsException(System.Exception)">
+            <summary>
+            Método que obtiene todos lo valores que serán escritos en el archivo de log.
+            </summary>
+            <param name="exception">tipo de error.</param>
+            <returns>returna todos los valores a escribir en archivo de log.</returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Log.ErrorProcess.AddKeyValue(System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+            Método que agrega un key al diccionario validando que el valor no sea <see cref="F:System.String.Empty"/>.
+            </summary>
+            <param name="keyValues">diccionario de valores.</param>
+            <param name="key">clave del valor</param>
+            <param name="value">valor.</param>
+        </member>
+        <member name="T:Ofimatic.Helpers.Log.Logger">
+            <summary>
+            Clase que proporciona una herramienta para el registro de errores en la aplicación.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Log.Logger.ErrorProcess">
+            <summary>
+            Obtiene o establece el procesar de errores por defecto.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Log.Logger.LogFileName">
+            <summary>
+            Obtiene o establece la ruta del archivo de log.
+            </summary>
+        </member>
+        <member name="P:Ofimatic.Helpers.Log.Logger.EnableLog">
+            <summary>
+            Obtiene o establece un valor que indica si el registro de errores está habilitado. Para true, los errores se
+            registran con <see cref="M:Ofimatic.Helpers.Log.Logger.Logging(System.String[])"/>, en caso contrario las llamadas a este método no tiene efecto.
+            </summary>
+            <remarks>
+            por defecto es true.
+            </remarks>
+        </member>
+        <member name="M:Ofimatic.Helpers.Log.Logger.StartUnhandledException">
+            <summary>
+            Método que inicio el proceso de captura de excepciones no manejadas.
+            Todas las expresiones que no son manejadas son capturadas por este método y la envía al archivo de log.
+            </summary>
+        </member>
+        <member name="M:Ofimatic.Helpers.Log.Logger.Logging(System.Exception)">
+            <summary>
+            Método que escribe en el archivo de log los errores contenido en <see cref="T:System.Exception"/>.
+            </summary>
+            <param name="exception">excepción que contiene los errores.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ofimatic.Helpers.Log.Logger.Logging(System.Object)">
+            <summary>
+            Método que escribe en el archivo de log los errores contenido en las propiedades de un objeto.
+            </summary>
+            <param name="source">objeto que contiene los errores.</param>
+        </member>
+        <member name="M:Ofimatic.Helpers.Log.Logger.Logging(System.String[])">
+            <summary>
+            Método que escribe en el archivo de log los errores contenido un array de <see cref="T:System.String"/>.
+            </summary>
+            <param name="errors">arreglo de errores.</param>
+        </member>
+    </members>
+</doc>

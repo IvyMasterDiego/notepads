@@ -9,9 +9,9 @@
         public bool EnableRegister { get; set; } = true;
         public string Username { get; set; } = "501";
         public string Password { get; set; } = "501Die";
-        public string Server { get; set; } = "192.168.1.25";
-        public string DialNumber { get; set; } = "504@192.168.1.25";
-        public string TransfNumber { get; set; } = "500@192.168.1.25";
+        public string Server { get; set; } = "10.0.0.214";
+        public string DialNumber { get; set; } = "502@10.0.0.214";
+        public string TransfNumber { get; set; } = "500@10.0.0.214";
         public string DTMF { get; set; } = "1234";
         public string WavDirectory { get; set; } = "C:\\WAVS";
     }
